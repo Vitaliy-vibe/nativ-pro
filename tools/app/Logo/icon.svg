@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Фон иконки -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111324" />
+      <stop offset="50%" stop-color="#0B0C16" />
+      <stop offset="100%" stop-color="#19102C" />
+    </linearGradient>
+
+    <!-- Неоновая обводка сквиркла -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+
+    <!-- Левая вертикальная грань (Холодный синий -> Циан) -->
+    <linearGradient id="leftStem" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+
+    <!-- Правая вертикальная грань (Фиолетовый -> Розовый) -->
+    <linearGradient id="rightStem" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+
+    <!-- Диагональный мост (Эффект стеклянного слоя) -->
+    <linearGradient id="diagBridge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#C084FC" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#F43F5E" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Блик стекла на диагонали -->
+    <linearGradient id="glassEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Мягкое свечение под буквой -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Базовый сквиркл (macOS стиль) -->
+  <rect x="16" y="16" width="480" height="480" rx="110" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="8" />
+
+  <!-- Фоновое свечение -->
+  <g opacity="0.35" filter="url(#glow)">
+    <path d="M136 128 L216 128 L376 384 L296 384 Z" fill="url(#diagBridge)" />
+  </g>
+
+  <!-- Группа буквы N -->
+  <g>
+    <!-- Левая стойка (со скошенным внутренним углом в стиле технического трафарета) -->
+    <path d="M 136 156 
+             C 136 138, 148 128, 164 128 
+             L 208 128 
+             L 208 384 
+             L 164 384 
+             C 148 384, 136 374, 136 356 
+             Z" fill="url(#leftStem)" />
+
+    <!-- Правая стойка -->
+    <path d="M 304 128 
+             L 348 128 
+             C 364 128, 376 138, 376 156 
+             L 376 356 
+             C 376 374, 364 384, 348 384 
+             L 304 384 
+             Z" fill="url(#rightStem)" />
+
+    <!-- Тень под диагональным слоем для глубины -->
+    <path d="M 146 128 L 222 128 L 366 384 L 290 384 Z" fill="#000000" opacity="0.35" transform="translate(0, 6)" />
+
+    <!-- Главный диагональный слой (Перекрытие внахлест) -->
+    <path d="M 136 152 
+             C 136 136, 146 128, 162 128 
+             L 216 128 
+             C 228 128, 236 134, 242 144 
+             L 376 360 
+             C 376 376, 366 384, 350 384 
+             L 296 384 
+             C 284 384, 276 378, 270 368 
+             Z" fill="url(#diagBridge)" stroke="url(#glassEdge)" stroke-width="2" />
+  </g>
+</svg>
